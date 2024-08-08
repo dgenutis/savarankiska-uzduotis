@@ -1,0 +1,18 @@
+<%- include('./partials/head.ejs') %>
+<header>
+  <h1>Filmų sąrašas, kuriuos dar norėsiu pažiūrėti</h1>
+  <a href="/movies/add">Pridėti naują filmą</a>
+
+</header>
+<div id="movies">
+  <% movies.forEach(movie => { %>
+    <div class="list" >
+      <h2><%= movie.title %> (<%= movie.year %> m.)</h2>
+      <form action="/movies/<%= movie._id %>?_method=DELETE" method="POST">
+        <button type="submit">Ištrinti</button>
+      </form>
+    </div>
+  <% }) %>
+</div>
+
+<%- include('./partials/footer.ejs') %>
